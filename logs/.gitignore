@@ -1,0 +1,5 @@
+# Keep this directory
+logs/
+
+# But ignore the content
+*.json

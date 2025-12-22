@@ -1,0 +1,147 @@
+.layout {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
+}
+
+.container {
+  margin: 2rem 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-color);
+  margin-bottom: 1rem;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.pageSubtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.pageButton {
+  min-width: 40px;
+  height: 40px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pageButton:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.pageButton.active {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #1e1e1e;
+  font-weight: 600;
+}
+
+.pageButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.navButton {
+  font-weight: 700;
+}
+
+.ellipsis {
+  color: rgba(255, 255, 255, 0.5);
+  padding: 0 0.5rem;
+  font-size: 1rem;
+}
+
+.filterInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.filterInfo strong {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
+.clearFilter {
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.clearFilter:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .pageTitle {
+    font-size: 1.75rem;
+  }
+
+  .pageSubtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .pagination {
+    gap: 0.25rem;
+  }
+
+  .pageButton {
+    min-width: 36px;
+    height: 36px;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}

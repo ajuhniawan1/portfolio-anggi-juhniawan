@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Monitoring Transactions EDC Bank BNI",
+    "description": "A web application to monitor transaction activities on EDC devices for Bank BNI.",
+    "logo": "/logos/driwwwle.svg",
+    "link": "http://146.196.106.203:64390/",
+    "slug": "monitoring-transactions-edc-bank-bni",
+    "image": "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/1.png",
+    "stars": 245,
+    "forks": 32,
+    "language": "TypeScript, React, Tailwind, Golang",
+    "content": "This comprehensive web application provides real-time monitoring of EDC (Electronic Data Capture) transaction activities for Bank BNI. The system enables bank administrators and technical teams to track, analyze, and manage all payment terminal transactions across multiple locations.\\n\\nThe application features a modern, responsive dashboard built with React and TypeScript, offering intuitive data visualization through charts and tables. The backend, powered by Golang, ensures high performance and reliability in processing large volumes of transaction data.\\n\\nKey capabilities include transaction filtering by date range, terminal ID, merchant information, and transaction status. The system also provides detailed analytics, automated alerts for failed transactions, and comprehensive reporting features that help identify trends and potential issues.",
+    "gallery": [
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/1.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/2.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/3.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/4.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/5.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/bank-bni/6.png"
+    ],
+    "features": [
+      "Real-time transaction monitoring dashboard",
+      "Advanced filtering and search capabilities",
+      "Transaction analytics and reporting",
+      "Automated alert system for failed transactions",
+      "Multi-location terminal management",
+      "Export data to Excel/PDF formats",
+      "Role-based access control",
+      "Transaction history and audit trail"
+    ],
+    "techStack": ["TypeScript", "React", "Tailwind CSS", "Golang", "PostgreSQL", "REST API"]
+  },
+  {
+    "title": "Web Key Bank Mestika",
+    "description": "A secure online banking platform for managing accounts, transfers, and payments.",
+    "logo": "/logos/vsc.svg",
+    "link": "",
+    "slug": "web-key-bank-mestika",
+    "image": "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/npay/1.png",
+    "stars": 1240,
+    "forks": 387,
+    "language": "PHP, JavaScript, MySQL",
+    "content": "Web Key Bank Mestika is a comprehensive online banking solution...",
+    "gallery": [
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/npay/1.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/npay/2.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/npay/3.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/npay/4.png",
+      "https://raw.githubusercontent.com/YOUR_USERNAME/portfolio-assets/main/images/npay/5.png"
+    ],
+    "features": [
+      "Secure login with multi-factor authentication",
+      "Account balance and transaction history",
+      "Fund transfer between accounts",
+      "Bill payment and utilities"
+    ],
+    "techStack": ["PHP", "JavaScript", "jQuery", "MySQL", "Bootstrap"]
+  }
+]
