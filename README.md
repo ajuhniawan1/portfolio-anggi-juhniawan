@@ -2,7 +2,7 @@
 
 A Visual Studio Code themed developer portfolio built with Next.js. This repo contains the source, serverless API endpoints, and helper scripts used to collect visitor logs and send Telegram notifications.
 
-![vscode-portfolio banner](https://imgur.com/JXJ9mpO.gif)
+![vscode-portfolio banner](https://drive.google.com/file/d/1ETDAu2TAiyygTiqidvIDhdSFJhrqrY4p/view?usp=sharing)
 
 ## Quick Overview
 - Next.js app with serverless API endpoints in `pages/api`.
