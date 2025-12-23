@@ -2,7 +2,7 @@
 
 A Visual Studio Code themed developer portfolio built with Next.js. This repo contains the source, serverless API endpoints, and helper scripts used to collect visitor logs and send Telegram notifications.
 
-![vscode-portfolio banner](https://drive.google.com/file/d/1ETDAu2TAiyygTiqidvIDhdSFJhrqrY4p/view?usp=sharing)
+![vscode-portfolio banner](./public/img/banner.png)
 
 ## Quick Overview
 - Next.js app with serverless API endpoints in `pages/api`.
@@ -72,6 +72,16 @@ Vercel expects the source repository (not just the `.next` folder) so it can run
 Notes:
 - Do not commit `.env.local` to Git.
 - If you rely on `pages/api/*` (the serverless functions), do NOT export static-only via `next export`.
+- **Important:** Vercel serverless environment has a read-only filesystem. The visitor storage automatically falls back to in-memory mode in production, so logs will not persist between function invocations. For persistent logging in production, consider using Vercel KV, Vercel Postgres, or an external database.
+
+### Environment Variables in Vercel
+
+You must manually add ALL environment variables from `.env.local` to your Vercel project:
+
+1. Dashboard → Project → Settings → Environment Variables
+2. Add each variable with scope **Production** (and Preview/Development if needed)
+3. Mark sensitive values (bot tokens, secrets) as **Sensitive**
+4. After adding variables, trigger a **Redeploy** (uncheck "Use existing Build Cache" for first deploy after adding vars)
 
 ### Optional: Scheduled batch report on Vercel
 
@@ -93,16 +103,16 @@ npm run dev
 # Build for production
 npm run build
 
-# Test batch report (local)
-.\n+# in PowerShell
+# Test batch report (local, in PowerShell)
 .\send-visitor-report.ps1
 ```
 
 ## Troubleshooting
 
-- If messages don't arrive in Telegram: verify `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` and check server logs.
-- If visitor activity isn't recorded: ensure `logs/` exists and is writable by the process.
+- If messages don't arrive in Telegram: verify `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` and check server logs. In production (Vercel), check Function Logs in the Deployments tab.
+- If visitor activity isn't recorded locally: ensure `logs/` exists and is writable by the process. In production (Vercel), logs use in-memory storage and don't persist.
 - Image fetches from raw GitHub may timeout if GitHub is slow; ensure `NEXT_PUBLIC_GITHUB_RAW_URL` points to a public repository with images uploaded.
+- If deployment fails with "Vulnerable version of Next.js detected": run `npm install next@latest` locally, commit, and push to update Next.js to a patched version.
 
 ## License / Contributing
 Feel free to open issues or pull requests. Do not commit secrets.
