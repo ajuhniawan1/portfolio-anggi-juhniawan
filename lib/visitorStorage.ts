@@ -121,8 +121,17 @@ export function getVisitorByIP(ip: string): VisitorLog | null {
 
 // Clear logs (after sending notification)
 export function clearVisitorLogs() {
-  ensureLogDir();
-  writeVisitorLogs({});
+  if (isVercelProduction) {
+    inMemoryLogs = {};
+    return;
+  }
+  
+  try {
+    ensureLogDir();
+    writeVisitorLogs({});
+  } catch (error) {
+    console.error('Error clearing visitor logs:', error);
+  }
 }
 
 // Get summary statistics
