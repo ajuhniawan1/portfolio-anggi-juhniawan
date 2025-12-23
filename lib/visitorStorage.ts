@@ -14,62 +14,56 @@ export interface VisitorLog {
 
 const LOG_FILE = path.join(process.cwd(), 'logs', 'visitors.json');
 
-// In-memory cache for Vercel serverless (since file system is read-only)
+// In-memory cache for serverless environments (fallback when filesystem is unavailable)
 let inMemoryLogs: { [ip: string]: VisitorLog } = {};
-
-// Check if running in Vercel production (read-only file system)
-const isVercelProduction = process.env.VERCEL === '1';
-
-// Ensure logs directory exists
-function ensureLogDir() {
-  if (isVercelProduction) return; // Skip in Vercel
-  
-  try {
-    const logDir = path.join(process.cwd(), 'logs');
-    if (!fs.existsSync(logDir)) {
-      fs.mkdirSync(logDir, { recursive: true });
-    }
-  } catch (error) {
-    // Silently fail in read-only environments
-    console.log('Could not create log directory (read-only filesystem)');
-  }
-}
+let useFileSystem = true; // Try filesystem first, fallback to memory if it fails
 
 // Read visitor logs
 export function readVisitorLogs(): { [ip: string]: VisitorLog } {
-  // In Vercel, use in-memory cache
-  if (isVercelProduction) {
+  // If filesystem is known to be unavailable, use memory immediately
+  if (!useFileSystem) {
     return inMemoryLogs;
   }
   
   try {
-    ensureLogDir();
-    
     if (!fs.existsSync(LOG_FILE)) {
+      // Try to ensure directory exists
+      const logDir = path.join(process.cwd(), 'logs');
+      if (!fs.existsSync(logDir)) {
+        fs.mkdirSync(logDir, { recursive: true });
+      }
       return {};
     }
     
     const data = fs.readFileSync(LOG_FILE, 'utf-8');
     return JSON.parse(data);
   } catch (error) {
-    console.error('Error reading visitor logs:', error);
-    return {};
+    // Filesystem not available (e.g., Vercel serverless) - switch to memory mode
+    console.log('Using in-memory storage (filesystem unavailable)');
+    useFileSystem = false;
+    return inMemoryLogs;
   }
 }
 
 // Write visitor logs
 export function writeVisitorLogs(logs: { [ip: string]: VisitorLog }) {
-  // In Vercel, update in-memory cache only
-  if (isVercelProduction) {
+  // If filesystem is known to be unavailable, use memory immediately
+  if (!useFileSystem) {
     inMemoryLogs = logs;
     return;
   }
   
   try {
-    ensureLogDir();
+    const logDir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(logDir)) {
+      fs.mkdirSync(logDir, { recursive: true });
+    }
     fs.writeFileSync(LOG_FILE, JSON.stringify(logs, null, 2), 'utf-8');
   } catch (error) {
-    console.error('Error writing visitor logs:', error);
+    // Filesystem not available - switch to memory mode
+    console.log('Switching to in-memory storage (filesystem unavailable)');
+    useFileSystem = false;
+    inMemoryLogs = logs;
   }
 }
 
@@ -121,16 +115,16 @@ export function getVisitorByIP(ip: string): VisitorLog | null {
 
 // Clear logs (after sending notification)
 export function clearVisitorLogs() {
-  if (isVercelProduction) {
+  if (!useFileSystem) {
     inMemoryLogs = {};
     return;
   }
   
   try {
-    ensureLogDir();
     writeVisitorLogs({});
   } catch (error) {
     console.error('Error clearing visitor logs:', error);
+    inMemoryLogs = {};
   }
 }
 
