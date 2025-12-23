@@ -24,9 +24,14 @@ const isVercelProduction = process.env.VERCEL === '1';
 function ensureLogDir() {
   if (isVercelProduction) return; // Skip in Vercel
   
-  const logDir = path.join(process.cwd(), 'logs');
-  if (!fs.existsSync(logDir)) {
-    fs.mkdirSync(logDir, { recursive: true });
+  try {
+    const logDir = path.join(process.cwd(), 'logs');
+    if (!fs.existsSync(logDir)) {
+      fs.mkdirSync(logDir, { recursive: true });
+    }
+  } catch (error) {
+    // Silently fail in read-only environments
+    console.log('Could not create log directory (read-only filesystem)');
   }
 }
 
@@ -37,13 +42,13 @@ export function readVisitorLogs(): { [ip: string]: VisitorLog } {
     return inMemoryLogs;
   }
   
-  ensureLogDir();
-  
-  if (!fs.existsSync(LOG_FILE)) {
-    return {};
-  }
-  
   try {
+    ensureLogDir();
+    
+    if (!fs.existsSync(LOG_FILE)) {
+      return {};
+    }
+    
     const data = fs.readFileSync(LOG_FILE, 'utf-8');
     return JSON.parse(data);
   } catch (error) {
@@ -60,9 +65,8 @@ export function writeVisitorLogs(logs: { [ip: string]: VisitorLog }) {
     return;
   }
   
-  ensureLogDir();
-  
   try {
+    ensureLogDir();
     fs.writeFileSync(LOG_FILE, JSON.stringify(logs, null, 2), 'utf-8');
   } catch (error) {
     console.error('Error writing visitor logs:', error);
