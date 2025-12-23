@@ -14,8 +14,16 @@ export interface VisitorLog {
 
 const LOG_FILE = path.join(process.cwd(), 'logs', 'visitors.json');
 
+// In-memory cache for Vercel serverless (since file system is read-only)
+let inMemoryLogs: { [ip: string]: VisitorLog } = {};
+
+// Check if running in Vercel production (read-only file system)
+const isVercelProduction = process.env.VERCEL === '1';
+
 // Ensure logs directory exists
 function ensureLogDir() {
+  if (isVercelProduction) return; // Skip in Vercel
+  
   const logDir = path.join(process.cwd(), 'logs');
   if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir, { recursive: true });
@@ -24,6 +32,11 @@ function ensureLogDir() {
 
 // Read visitor logs
 export function readVisitorLogs(): { [ip: string]: VisitorLog } {
+  // In Vercel, use in-memory cache
+  if (isVercelProduction) {
+    return inMemoryLogs;
+  }
+  
   ensureLogDir();
   
   if (!fs.existsSync(LOG_FILE)) {
@@ -41,6 +54,12 @@ export function readVisitorLogs(): { [ip: string]: VisitorLog } {
 
 // Write visitor logs
 export function writeVisitorLogs(logs: { [ip: string]: VisitorLog }) {
+  // In Vercel, update in-memory cache only
+  if (isVercelProduction) {
+    inMemoryLogs = logs;
+    return;
+  }
+  
   ensureLogDir();
   
   try {
