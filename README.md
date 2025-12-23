@@ -2,7 +2,7 @@
 
 A Visual Studio Code themed developer portfolio built with Next.js. This repo contains the source, serverless API endpoints, and helper scripts used to collect visitor logs and send Telegram notifications.
 
-![vscode-portfolio banner](./public/img/banner.png)
+![vscode-portfolio banner](./public/img/Banner.png)
 
 ## Quick Overview
 - Next.js app with serverless API endpoints in `pages/api`.
@@ -72,16 +72,6 @@ Vercel expects the source repository (not just the `.next` folder) so it can run
 Notes:
 - Do not commit `.env.local` to Git.
 - If you rely on `pages/api/*` (the serverless functions), do NOT export static-only via `next export`.
-- **Important:** Vercel serverless environment has a read-only filesystem. The visitor storage automatically falls back to in-memory mode in production, so logs will not persist between function invocations. For persistent logging in production, consider using Vercel KV, Vercel Postgres, or an external database.
-
-### Environment Variables in Vercel
-
-You must manually add ALL environment variables from `.env.local` to your Vercel project:
-
-1. Dashboard → Project → Settings → Environment Variables
-2. Add each variable with scope **Production** (and Preview/Development if needed)
-3. Mark sensitive values (bot tokens, secrets) as **Sensitive**
-4. After adding variables, trigger a **Redeploy** (uncheck "Use existing Build Cache" for first deploy after adding vars)
 
 ### Optional: Scheduled batch report on Vercel
 
