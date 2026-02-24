@@ -1,11 +1,10 @@
 import React from 'react';
-import { GetStaticProps, GetStaticPaths } from 'next';
+import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { VscChevronLeft, VscLink } from 'react-icons/vsc';
 
 import { projects as localProjects, Project } from '@/data/projects';
-import { fetchProjectsFromGitHub } from '@/lib/githubService';
 import ImageGallery from '@/components/ImageGallery';
 
 import styles from '@/styles/ProjectDetailPage.module.css';
@@ -108,29 +107,36 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: [],
-    fallback: 'blocking',
-  };
-};
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ajuhniawan1/portfolio-assents/main';
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // Coba ambil dari GitHub dulu, fallback ke local
-  let allProjects: Project[] = [];
+  let allProjects: Project[] = localProjects;
+
   try {
-    const githubProjects = await fetchProjectsFromGitHub();
-    allProjects = githubProjects.length > 0 ? githubProjects : localProjects;
-  } catch {
-    allProjects = localProjects;
+    const response = await fetch(`${GITHUB_RAW_URL}/portfolio.json`, {
+      headers: { 'Cache-Control': 'no-cache' },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (Array.isArray(data) && data.length > 0) {
+        allProjects = data.map((p: Project) => ({
+          ...p,
+          image: p.image?.startsWith('/img/') ? `${GITHUB_RAW_URL}${p.image}` : p.image,
+          gallery: p.gallery?.map((img: string) =>
+            img.startsWith('/img/') ? `${GITHUB_RAW_URL}${img}` : img
+          ),
+        }));
+      }
+    }
+  } catch (error) {
+    console.error('Failed to fetch from GitHub, using local data:', error);
   }
 
   const project = allProjects.find((p) => p.slug === params?.slug);
 
   if (!project) {
-    return {
-      notFound: true,
-    };
+    return { notFound: true };
   }
 
   return {
@@ -138,7 +144,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       project,
       title: project.title,
     },
-    revalidate: 60, // ISR: revalidate setiap 60 detik
   };
 };
 
