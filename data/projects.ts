@@ -16,6 +16,28 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'SPN Invoice Management System',
+    description: 'Web untuk pengelolaan sistem invoice dan transaksi vending machine SPN.',
+    logo: '/logos/vsc.svg',
+    link: '',
+    slug: 'spn-invoice-management-system',
+    image: '/img/spn/1.png',
+    stars: 234,
+    forks: 45,
+    language: 'Odoo 17, Bootstrap, JavaScript, PostgreSQL, Python',
+    content: 'Project SPN merupakan sistem berbasis website yang dikembangkan untuk perusahaan vending machine. Sistem ini berfungsi untuk mengelola pembuatan invoice bagi merchant yang terdaftar di SPN, sekaligus menyediakan fitur monitoring dan riwayat transaksi penjualan yang terjadi pada mesin vending.',
+    gallery: ['/img/spn/1.png', '/img/spn/2.png', '/img/spn/3.png', '/img/spn/4.png'],
+    features: [
+      'Monitoring transaksi secara real-time',
+      'Laporan dan analisis data penjualan',
+      'Manajemen pengguna dan hak akses',
+      'Enkripsi dan keamanan data',
+      'Desain responsif (mobile & desktop)',
+      'Ekspor laporan dalam berbagai format',
+    ],
+    techStack: ['Odoo 17', 'JavaScript', 'Bootstrap', 'PostgreSQL', 'Python'],
+  },
+  {
     title: 'Monitoring Transactions EDC Bank BNI',
     description:
       'A web application to monitor transaction activities on EDC devices for Bank BNI.',
