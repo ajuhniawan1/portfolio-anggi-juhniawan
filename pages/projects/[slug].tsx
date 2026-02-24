@@ -4,7 +4,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { VscChevronLeft, VscLink } from 'react-icons/vsc';
 
-import { projects, Project } from '@/data/projects';
+import { projects as localProjects, Project } from '@/data/projects';
+import { fetchProjectsFromGitHub } from '@/lib/githubService';
 import ImageGallery from '@/components/ImageGallery';
 
 import styles from '@/styles/ProjectDetailPage.module.css';
@@ -108,18 +109,23 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = projects.map((project) => ({
-    params: { slug: project.slug },
-  }));
-
   return {
-    paths,
-    fallback: false,
+    paths: [],
+    fallback: 'blocking',
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const project = projects.find((p) => p.slug === params?.slug);
+  // Coba ambil dari GitHub dulu, fallback ke local
+  let allProjects: Project[] = [];
+  try {
+    const githubProjects = await fetchProjectsFromGitHub();
+    allProjects = githubProjects.length > 0 ? githubProjects : localProjects;
+  } catch {
+    allProjects = localProjects;
+  }
+
+  const project = allProjects.find((p) => p.slug === params?.slug);
 
   if (!project) {
     return {
@@ -132,6 +138,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       project,
       title: project.title,
     },
+    revalidate: 60, // ISR: revalidate setiap 60 detik
   };
 };
 
