@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import GitHubCalendar from 'react-github-calendar';
+// import GitHubCalendar from 'react-github-calendar';
 import { VscRepo, VscPerson } from 'react-icons/vsc';
 
 import RepoCard from '@/components/RepoCard';
@@ -59,6 +59,7 @@ const GithubPage = ({ repos, user }: GithubPageProps) => {
             <RepoCard key={repo.id} repo={repo} />
           ))}
         </div>
+        {/* 
         <div className={styles.contributions}>
           <GitHubCalendar
             username={process.env.NEXT_PUBLIC_GITHUB_USERNAME!}
@@ -74,6 +75,7 @@ const GithubPage = ({ repos, user }: GithubPageProps) => {
             }}
           />
         </div>
+        */}
       </div>
     </div>
   );
