@@ -1,13 +1,13 @@
-import React from 'react';
-import { GetServerSideProps } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-import { VscChevronLeft, VscLink } from 'react-icons/vsc';
+import React from "react";
+import { GetStaticProps, GetStaticPaths } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { VscChevronLeft, VscLink } from "react-icons/vsc";
 
-import { projects as localProjects, Project } from '@/data/projects';
-import ImageGallery from '@/components/ImageGallery';
+import { projects, Project } from "@/data/projects";
+import ImageGallery from "@/components/ImageGallery";
 
-import styles from '@/styles/ProjectDetailPage.module.css';
+import styles from "@/styles/ProjectDetailPage.module.css";
 
 interface ProjectDetailProps {
   project: Project;
@@ -26,7 +26,7 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
         <div className={styles.meta}>
           {project.language && (
             <div className={styles.technologies}>
-              {project.language.split(',').map((tech, index) => (
+              {project.language.split(",").map((tech, index) => (
                 <span key={index} className={styles.techBadge}>
                   {tech.trim()}
                 </span>
@@ -34,7 +34,7 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
             </div>
           )}
 
-          {project.link && project.link.startsWith('http') && (
+          {project.link && project.link.startsWith("http") && (
             <a
               href={project.link}
               target="_blank"
@@ -65,7 +65,7 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Overview</h2>
             <div className={styles.text}>
-              {project.content.split('\\n\\n').map((paragraph, index) => (
+              {project.content.split("\\n\\n").map((paragraph, index) => (
                 <p key={index}>{paragraph}</p>
               ))}
             </div>
@@ -99,7 +99,10 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
         {project.gallery && project.gallery.length > 1 && (
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Gallery</h2>
-            <ImageGallery images={project.gallery} projectTitle={project.title} />
+            <ImageGallery
+              images={project.gallery}
+              projectTitle={project.title}
+            />
           </section>
         )}
       </div>
@@ -107,36 +110,24 @@ const ProjectDetailPage = ({ project }: ProjectDetailProps) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const GITHUB_RAW_URL = 'https://raw.githubusercontent.com/ajuhniawan1/portfolio-assents/main';
+export const getStaticPaths: GetStaticPaths = async () => {
+  const paths = projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
 
-  let allProjects: Project[] = localProjects;
+  return {
+    paths,
+    fallback: false,
+  };
+};
 
-  try {
-    const response = await fetch(`${GITHUB_RAW_URL}/portfolio.json`, {
-      headers: { 'Cache-Control': 'no-cache' },
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      if (Array.isArray(data) && data.length > 0) {
-        allProjects = data.map((p: Project) => ({
-          ...p,
-          image: p.image?.startsWith('/img/') ? `${GITHUB_RAW_URL}${p.image}` : p.image,
-          gallery: p.gallery?.map((img: string) =>
-            img.startsWith('/img/') ? `${GITHUB_RAW_URL}${img}` : img
-          ),
-        }));
-      }
-    }
-  } catch (error) {
-    console.error('Failed to fetch from GitHub, using local data:', error);
-  }
-
-  const project = allProjects.find((p) => p.slug === params?.slug);
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const project = projects.find((p) => p.slug === params?.slug);
 
   if (!project) {
-    return { notFound: true };
+    return {
+      notFound: true,
+    };
   }
 
   return {

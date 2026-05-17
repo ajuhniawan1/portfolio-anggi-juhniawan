@@ -1,10 +1,10 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { VscCode } from 'react-icons/vsc';
+import Image from "next/image";
+import Link from "next/link";
+import { VscCode } from "react-icons/vsc";
 
-import { Project } from '@/types';
+import { Project } from "@/types";
 
-import styles from '@/styles/ProjectCard.module.css';
+import styles from "@/styles/ProjectCard.module.css";
 
 interface ProjectCardProps {
   project: Project;
@@ -12,8 +12,10 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ project, onLanguageClick }: ProjectCardProps) => {
-  const hasExternalLink = project.link && project.link.startsWith('http');
-  const projectUrl = hasExternalLink ? project.link : `/projects/${project.slug}`;
+  const hasExternalLink = project.link && project.link.startsWith("http");
+  const projectUrl = hasExternalLink
+    ? project.link
+    : `/projects/${project.slug}`;
 
   const CardWrapper = ({ children }: { children: React.ReactNode }) => {
     if (hasExternalLink) {
@@ -60,7 +62,7 @@ const ProjectCard = ({ project, onLanguageClick }: ProjectCardProps) => {
 
         {project.language && (
           <div className={styles.technologies}>
-            {project.language.split(',').map((tech, index) => (
+            {project.language.split(",").map((tech, index) => (
               <span
                 key={index}
                 className={styles.techTag}

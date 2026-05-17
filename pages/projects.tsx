@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import ProjectCard from '@/components/ProjectCard';
-import { projects as localProjects } from '@/data/projects';
-import { fetchProjectsFromGitHub } from '@/lib/githubService';
-import { Project } from '@/types';
+import React, { useState, useEffect } from "react";
+import ProjectCard from "@/components/ProjectCard";
+import { projects as localProjects } from "@/data/projects";
+import { fetchProjectsFromGitHub } from "@/lib/githubService";
+import { Project } from "@/types";
 
-import styles from '@/styles/ProjectsPage.module.css';
+import styles from "@/styles/ProjectsPage.module.css";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -16,7 +16,7 @@ const ProjectsPage = () => {
   useEffect(() => {
     const loadProjects = async () => {
       const githubProjects = await fetchProjectsFromGitHub();
-      
+
       // Prioritas GitHub dulu, fallback ke local kalau error
       if (githubProjects.length > 0) {
         setProjects(githubProjects);
@@ -34,9 +34,9 @@ const ProjectsPage = () => {
   const filteredProjects = selectedLanguage
     ? projects.filter((project) =>
         project.language
-          ?.split(',')
+          ?.split(",")
           .map((tech) => tech.trim())
-          .includes(selectedLanguage)
+          .includes(selectedLanguage),
       )
     : projects;
 
@@ -69,18 +69,18 @@ const ProjectsPage = () => {
         disabled={currentPage === 1}
       >
         &lt;
-      </button>
+      </button>,
     );
 
     // Always show first page
     pages.push(
       <button
         key={1}
-        className={`${styles.pageButton} ${currentPage === 1 ? styles.active : ''}`}
+        className={`${styles.pageButton} ${currentPage === 1 ? styles.active : ""}`}
         onClick={() => setCurrentPage(1)}
       >
         1
-      </button>
+      </button>,
     );
 
     // Show ellipsis or pages 2-3
@@ -88,7 +88,7 @@ const ProjectsPage = () => {
       pages.push(
         <span key="ellipsis-start" className={styles.ellipsis}>
           ...
-        </span>
+        </span>,
       );
     }
 
@@ -102,11 +102,11 @@ const ProjectsPage = () => {
       pages.push(
         <button
           key={i}
-          className={`${styles.pageButton} ${currentPage === i ? styles.active : ''}`}
+          className={`${styles.pageButton} ${currentPage === i ? styles.active : ""}`}
           onClick={() => setCurrentPage(i)}
         >
           {i}
-        </button>
+        </button>,
       );
     }
 
@@ -115,7 +115,7 @@ const ProjectsPage = () => {
       pages.push(
         <span key="ellipsis-end" className={styles.ellipsis}>
           ...
-        </span>
+        </span>,
       );
     }
 
@@ -124,11 +124,11 @@ const ProjectsPage = () => {
       pages.push(
         <button
           key={totalPages}
-          className={`${styles.pageButton} ${currentPage === totalPages ? styles.active : ''}`}
+          className={`${styles.pageButton} ${currentPage === totalPages ? styles.active : ""}`}
           onClick={() => setCurrentPage(totalPages)}
         >
           {totalPages}
-        </button>
+        </button>,
       );
     }
 
@@ -141,7 +141,7 @@ const ProjectsPage = () => {
         disabled={currentPage === totalPages}
       >
         &gt;
-      </button>
+      </button>,
     );
 
     return pages;
@@ -168,7 +168,11 @@ const ProjectsPage = () => {
 
       <div className={styles.container}>
         {currentProjects.map((project) => (
-          <ProjectCard key={project.slug} project={project} onLanguageClick={handleLanguageFilter} />
+          <ProjectCard
+            key={project.slug}
+            project={project}
+            onLanguageClick={handleLanguageFilter}
+          />
         ))}
       </div>
 
@@ -181,7 +185,7 @@ const ProjectsPage = () => {
 
 export async function getStaticProps() {
   return {
-    props: { title: 'Projects' },
+    props: { title: "Projects" },
   };
 }
 

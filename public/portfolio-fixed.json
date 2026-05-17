@@ -1,5 +1,105 @@
 [
   {
+    "title": "TMS BPR",
+    "description": "A terminal management system for managing EDC devices and security keys for BPR.",
+    "logo": "/logos/subtrackt.svg",
+    "link": "",
+    "slug": "tms-bpr",
+    "image": "/img/bpr/1.png",
+    "stars": 96,
+    "forks": 18,
+    "language": "PHP, JavaScript, MySQL",
+    "content": "TMS BPR is a Terminal Management System designed for managing EDC devices across BPR merchant networks.\n\nThe platform provides centralized device configuration, merchant setup, network parameter management, and security key management. Additional features include TMK and KCV processing to securely store generated keys into PIN Key and MAC Key, ensuring EDC transactions can be validated and processed securely.",
+    "gallery": [
+      "/img/bpr/1.png",
+      "/img/bpr/2.png",
+      "/img/bpr/3.png",
+      "/img/bpr/4.png"
+    ],
+    "features": [
+      "Centralized EDC device management",
+      "Remote terminal configuration",
+      "Merchant information management",
+      "Network parameter setup",
+      "TMK generation and management",
+      "KCV validation for security keys",
+      "PIN Key storage",
+      "MAC Key storage",
+      "Secure key injection process",
+      "Device status monitoring",
+      "Audit trail",
+      "User access control"
+    ],
+    "techStack": ["PHP", "JavaScript", "MySQL", "AJAX", "Bootstrap", "REST API"]
+  },
+  {
+    "title": "Point of Sales System",
+    "description": "A web-based POS system for managing sales, products, payments, and transaction records.",
+    "logo": "/logos/vsc.svg",
+    "link": "",
+    "slug": "point-of-sales-system",
+    "image": "/img/pos/1.png",
+    "stars": 178,
+    "forks": 29,
+    "language": "Odoo 17, Python, JavaScript, PostgreSQL",
+    "content": "Point of Sales System is a web-based cashier and sales management platform designed to help businesses process transactions efficiently.\n\nThe system supports product management, customer orders, multiple payment methods, transaction history, invoice generation, and real-time sales monitoring. It is built to simplify daily store operations while keeping sales data organized and easy to track.",
+    "gallery": [
+      "/img/pos/1.png",
+      "/img/pos/2.png",
+      "/img/pos/3.png",
+      "/img/pos/4.png",
+      "/img/pos/5.png"
+    ],
+    "features": [
+      "Product and category management",
+      "Cashier transaction processing",
+      "Multiple payment methods",
+      "QRIS payment integration",
+      "Invoice and receipt generation",
+      "Real-time sales monitoring",
+      "Transaction history",
+      "Customer and merchant management",
+      "User role and access control",
+      "Responsive POS interface"
+    ],
+    "techStack": [
+      "Odoo 17",
+      "Python",
+      "JavaScript",
+      "PostgreSQL",
+      "XML",
+      "QWeb",
+      "REST API"
+    ]
+  },
+  {
+    "title": "SPN Invoice Management System",
+    "description": "Web untuk pengelolaan sistem invoice dan transaksi vending machine SPN.",
+    "logo": "/logos/vsc.svg",
+    "link": "",
+    "slug": "spn-invoice-management-system",
+    "image": "/img/spn/1.png",
+    "stars": 234,
+    "forks": 45,
+    "language": "Odoo 17, Bootstrap, JavaScript, PostgreSQL, Python",
+    "content": "Project SPN merupakan sistem berbasis website yang dikembangkan untuk perusahaan vending machine. Sistem ini berfungsi untuk mengelola pembuatan invoice bagi merchant yang terdaftar di SPN, sekaligus menyediakan fitur monitoring dan riwayat transaksi penjualan yang terjadi pada mesin vending.",
+    "gallery": [
+      "/img/spn/1.png",
+      "/img/spn/2.png",
+      "/img/spn/3.png",
+      "/img/spn/4.png"
+    ],
+    "features": [
+      "Monitoring transaksi secara real-time",
+      "Laporan dan analisis data penjualan",
+      "Manajemen pengguna dan hak akses",
+      "Enkripsi dan keamanan data",
+      "Desain responsif (mobile & desktop)",
+      "Ekspor laporan dalam berbagai format"
+    ],
+    "techStack": ["Odoo 17", "JavaScript", "Bootstrap", "PostgreSQL", "Python"]
+  },
+  {
     "title": "Monitoring Transactions EDC Bank BNI",
     "description": "A web application to monitor transaction activities on EDC devices for Bank BNI.",
     "logo": "/logos/driwwwle.svg",
@@ -9,8 +109,15 @@
     "stars": 245,
     "forks": 32,
     "language": "TypeScript, React, Tailwind, Golang",
-    "content": "This comprehensive web application provides real-time monitoring of EDC (Electronic Data Capture) transaction activities for Bank BNI. The system enables bank administrators and technical teams to track, analyze, and manage all payment terminal transactions across multiple locations.\\n\\nThe application features a modern, responsive dashboard built with React and TypeScript, offering intuitive data visualization through charts and tables. The backend, powered by Golang, ensures high performance and reliability in processing large volumes of transaction data.\\n\\nKey capabilities include transaction filtering by date range, terminal ID, merchant information, and transaction status. The system also provides detailed analytics, automated alerts for failed transactions, and comprehensive reporting features that help identify trends and potential issues.",
-    "gallery": ["/img/Bank_BNI/1.png", "/img/Bank_BNI/2.png", "/img/Bank_BNI/3.png", "/img/Bank_BNI/4.png", "/img/Bank_BNI/5.png", "/img/Bank_BNI/6.png"],
+    "content": "This comprehensive web application provides real-time monitoring of EDC (Electronic Data Capture) transaction activities for Bank BNI.\n\nThe application features a modern, responsive dashboard built with React and TypeScript, offering intuitive data visualization through charts and tables. The backend, powered by Golang, ensures high performance and reliability in processing large volumes of transaction data.\n\nKey capabilities include transaction filtering by date range, terminal ID, merchant information, and transaction status. The system also provides detailed analytics, automated alerts for failed transactions, and comprehensive reporting features that help identify trends and potential issues.",
+    "gallery": [
+      "/img/Bank_BNI/1.png",
+      "/img/Bank_BNI/2.png",
+      "/img/Bank_BNI/3.png",
+      "/img/Bank_BNI/4.png",
+      "/img/Bank_BNI/5.png",
+      "/img/Bank_BNI/6.png"
+    ],
     "features": [
       "Real-time transaction monitoring dashboard",
       "Advanced filtering and search capabilities",
@@ -21,7 +128,14 @@
       "Role-based access control",
       "Transaction history and audit trail"
     ],
-    "techStack": ["TypeScript", "React", "Tailwind CSS", "Golang", "PostgreSQL", "REST API"]
+    "techStack": [
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Golang",
+      "PostgreSQL",
+      "REST API"
+    ]
   },
   {
     "title": "Web Key Bank Mestika",
@@ -33,8 +147,14 @@
     "stars": 1240,
     "forks": 387,
     "language": "PHP, JavaScript, MySQL",
-    "content": "Web Key Bank Mestika is a comprehensive online banking solution designed to provide customers with secure and convenient access to their banking services. This platform enables users to perform various banking operations from the comfort of their homes or offices.\\n\\nThe system is built with a focus on security, implementing multiple layers of authentication including OTP verification, security questions, and encrypted communications. The user interface is designed to be intuitive and accessible, making it easy for customers of all technical levels to navigate and use the platform.\\n\\nThe platform supports a wide range of banking operations including account balance inquiries, fund transfers between accounts, bill payments, transaction history viewing, and financial reporting. The system also includes features for managing beneficiaries, scheduling recurring payments, and setting up transaction alerts.",
-    "gallery": ["/img/NPAY/1.png", "/img/NPAY/2.png", "/img/NPAY/3.png", "/img/NPAY/4.png", "/img/NPAY/5.png"],
+    "content": "Web Key Bank Mestika is a comprehensive online banking solution designed to provide customers with secure and convenient access to their banking services.\n\nThe system is built with a focus on security, implementing multiple layers of authentication including OTP verification, security questions, and encrypted communications.\n\nThe platform supports account balance inquiries, fund transfers, bill payments, transaction history viewing, and financial reporting.",
+    "gallery": [
+      "/img/NPAY/1.png",
+      "/img/NPAY/2.png",
+      "/img/NPAY/3.png",
+      "/img/NPAY/4.png",
+      "/img/NPAY/5.png"
+    ],
     "features": [
       "Secure login with multi-factor authentication",
       "Account balance and transaction history",
@@ -46,11 +166,18 @@
       "Financial reports and statements",
       "Customer support integration"
     ],
-    "techStack": ["PHP", "JavaScript", "jQuery", "MySQL", "Bootstrap", "SSL/TLS"]
+    "techStack": [
+      "PHP",
+      "JavaScript",
+      "jQuery",
+      "MySQL",
+      "Bootstrap",
+      "SSL/TLS"
+    ]
   },
   {
     "title": "TMS Mestika",
-    "description": "A configuration management system for EDC devices, enabling secure and efficient setup of IP, port, and merchant information.",
+    "description": "A configuration management system for EDC devices.",
     "logo": "/logos/subtrackt.svg",
     "link": "",
     "slug": "tms-mestika",
@@ -58,21 +185,26 @@
     "stars": 89,
     "forks": 15,
     "language": "PHP, JavaScript, MySQL",
-    "content": "TMS (Terminal Management System) Mestika is a sophisticated configuration management platform designed specifically for managing EDC (Electronic Data Capture) devices across Bank Mestika's network. This system streamlines the process of configuring, deploying, and maintaining payment terminals.\\n\\nThe platform provides centralized control over all EDC device configurations, allowing administrators to remotely configure network settings, merchant information, application parameters, and security settings. This eliminates the need for manual on-site configuration, significantly reducing deployment time and operational costs.\\n\\nTMS features include bulk configuration updates, remote firmware management, device health monitoring, and configuration templates for different merchant types. The system maintains a complete audit trail of all configuration changes, ensuring compliance and facilitating troubleshooting.",
-    "gallery": ["/img/TMS/1.png", "/img/TMS/2.png", "/img/TMS/3.png", "/img/TMS/4.png", "/img/TMS/5.png"],
+    "content": "TMS Mestika is a Terminal Management System designed for managing EDC devices across Bank Mestika's network.\n\nThe platform allows centralized remote configuration, firmware management, and device monitoring with full audit trails.",
+    "gallery": [
+      "/img/TMS/1.png",
+      "/img/TMS/2.png",
+      "/img/TMS/3.png",
+      "/img/TMS/4.png",
+      "/img/TMS/5.png"
+    ],
     "features": [
       "Centralized EDC device management",
       "Remote configuration deployment",
-      "Network settings management (IP, Port, Timeout)",
+      "Network settings management",
       "Merchant information configuration",
       "Bulk update capabilities",
-      "Configuration templates",
       "Device status monitoring",
       "Firmware version management",
-      "Complete audit trail",
+      "Audit trail",
       "User access control"
     ],
-    "techStack": ["PHP", "JavaScript", "MySQL", "AJAX", "Bootstrap", "RESTful API"]
+    "techStack": ["PHP", "JavaScript", "MySQL", "AJAX", "Bootstrap", "REST API"]
   },
   {
     "title": "Monitoring Transactions Bank OCBC",
@@ -87,7 +219,7 @@
   },
   {
     "title": "Services Transaction Cashlez",
-    "description": "A microservices-based architecture that processes payment transactions from Cashlez EDC devices through Cashlez services and integrates the data into Odoo.",
+    "description": "A microservices-based architecture integrating Cashlez EDC transactions into Odoo.",
     "logo": "/logos/vsc.svg",
     "link": "",
     "slug": "services-transaction-cashlez",
@@ -95,21 +227,25 @@
     "stars": 342,
     "forks": 78,
     "language": "Golang",
-    "content": "Services Transaction Cashlez is a robust microservices architecture that serves as a critical integration layer between Cashlez EDC payment devices and the Odoo ERP system. This solution enables seamless flow of transaction data from payment terminals to the business management system.\\n\\nBuilt with Golang for optimal performance and reliability, the service handles high-volume transaction processing with minimal latency. The architecture implements industry-standard security protocols to ensure data integrity and confidentiality throughout the transaction lifecycle.\\n\\nThe system features real-time transaction processing, automatic data transformation and validation, error handling with retry mechanisms, and comprehensive logging for audit purposes. It also includes monitoring capabilities to track system health and transaction success rates.",
+    "content": "Services Transaction Cashlez is a microservices architecture that processes payment transactions from Cashlez EDC devices and integrates them into Odoo ERP.",
     "gallery": ["/img/Cashlez/Cashlezz.png"],
     "features": [
-      "Microservices architecture for scalability",
+      "Microservices architecture",
       "Real-time transaction processing",
-      "Seamless Odoo ERP integration",
-      "Automatic data transformation",
-      "Transaction validation and verification",
-      "Error handling and retry mechanisms",
-      "Comprehensive logging and monitoring",
-      "High-performance concurrent processing",
-      "Secure API communication",
-      "Transaction reconciliation"
+      "Odoo ERP integration",
+      "Transaction validation",
+      "Error handling and retry",
+      "Logging and monitoring",
+      "Secure API communication"
     ],
-    "techStack": ["Golang", "REST API", "Odoo API", "PostgreSQL", "Docker", "Message Queue"]
+    "techStack": [
+      "Golang",
+      "REST API",
+      "Odoo API",
+      "PostgreSQL",
+      "Docker",
+      "Message Queue"
+    ]
   },
   {
     "title": "Yamaha Motor Parts",
@@ -123,69 +259,33 @@
     "language": "Laravel, OctoberCMS, Bootstrap"
   },
   {
-    "title": "Dashboard Analytics",
-    "description": "Real-time analytics dashboard with interactive charts and data visualization.",
+    "title": "Hommypay",
+    "description": "A dashboard application for managing Hommypay payment solutions.",
     "logo": "/logos/vsc.svg",
-    "link": "https://github.com/example/dashboard",
-    "slug": "dashboard-analytics",
-    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    "link": "",
+    "slug": "hommypay-dashboard",
+    "image": "/img/Hommypay/2.png",
     "stars": 234,
     "forks": 45,
-    "language": "React"
-  },
-  {
-    "title": "Mobile Payment App",
-    "description": "Secure mobile payment application with QR code scanning and digital wallet.",
-    "logo": "/logos/vsc.svg",
-    "link": "https://github.com/example/mobile-payment",
-    "slug": "mobile-payment",
-    "image": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=80",
-    "stars": 678,
-    "forks": 123,
-    "language": "React Native"
-  },
-  {
-    "title": "Inventory Management",
-    "description": "Complete inventory management system with barcode scanning and stock tracking.",
-    "logo": "/logos/vsc.svg",
-    "link": "https://github.com/example/inventory",
-    "slug": "inventory-management",
-    "image": "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80",
-    "stars": 432,
-    "forks": 89,
-    "language": "Laravel"
-  },
-  {
-    "title": "Social Media Platform",
-    "description": "A modern social media platform with real-time messaging and content sharing.",
-    "logo": "/logos/vsc.svg",
-    "link": "https://github.com/example/social",
-    "slug": "social-media",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    "stars": 890,
-    "forks": 234,
-    "language": "Next.js"
-  },
-  {
-    "title": "Video Streaming Service",
-    "description": "High-performance video streaming platform with adaptive bitrate streaming.",
-    "logo": "/logos/vsc.svg",
-    "link": "https://github.com/example/streaming",
-    "slug": "video-streaming",
-    "image": "https://images.unsplash.com/photo-1574267432644-f916d8e48e88?w=800&q=80",
-    "stars": 567,
-    "forks": 145,
-    "language": "Node.js"
-  },
-  {
-    "title": "Task Management Tool",
-    "description": "Collaborative task management with kanban boards and team collaboration.",
-    "logo": "/logos/vsc.svg",
-    "link": "https://github.com/example/tasks",
-    "slug": "task-management",
-    "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=800&q=80",
-    "stars": 345,
-    "forks": 78,
-    "language": "Vue.js"
+    "language": "Golang, Bootstrap, JavaScript, MySQL",
+    "content": "Hommypay Dashboard is a web application to manage and monitor Hommypay payment solutions.\n\nIt provides real-time monitoring, reporting, user management, and secure configuration.",
+    "gallery": [
+      "/img/Hommypay/1.png",
+      "/img/Hommypay/2.png",
+      "/img/Hommypay/3.png",
+      "/img/Hommypay/4.png",
+      "/img/Hommypay/5.png"
+    ],
+    "features": [
+      "Real-time transaction monitoring",
+      "Reporting and analytics",
+      "User management",
+      "Payment gateway configuration",
+      "Role-based access control",
+      "Data encryption",
+      "Responsive design",
+      "Export reports"
+    ],
+    "techStack": ["Golang", "JavaScript", "Bootstrap", "MySQL", "REST API"]
   }
 ]
