@@ -16,6 +16,83 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "TMS BPR",
+    description:
+      "A terminal management system for managing EDC devices and security keys for BPR.",
+    logo: "/logos/subtrackt.svg",
+    link: "",
+    slug: "tms-bpr",
+    image: "/img/bpr/1.png",
+    stars: 96,
+    forks: 18,
+    language: "PHP, JavaScript, MySQL",
+    content:
+      "TMS BPR is a Terminal Management System designed for managing EDC devices across BPR merchant networks.\n\nThe platform provides centralized device configuration, merchant setup, network parameter management, and security key management. Additional features include TMK and KCV processing to securely store generated keys into PIN Key and MAC Key, ensuring EDC transactions can be validated and processed securely.",
+    gallery: [
+      "/img/bpr/1.png",
+      "/img/bpr/2.png",
+      "/img/bpr/3.png",
+      "/img/bpr/4.png",
+    ],
+    features: [
+      "Centralized EDC device management",
+      "Remote terminal configuration",
+      "Merchant information management",
+      "Network parameter setup",
+      "TMK generation and management",
+      "KCV validation for security keys",
+      "PIN Key storage",
+      "MAC Key storage",
+      "Secure key injection process",
+      "Device status monitoring",
+      "Audit trail",
+      "User access control",
+    ],
+    techStack: ["PHP", "JavaScript", "MySQL", "AJAX", "Bootstrap", "REST API"],
+  },
+  {
+    title: "Point of Sales System",
+    description:
+      "A web-based POS system for managing sales, products, payments, and transaction records.",
+    logo: "/logos/vsc.svg",
+    link: "",
+    slug: "point-of-sales-system",
+    image: "/img/pos/1.png",
+    stars: 178,
+    forks: 29,
+    language: "Odoo 17, Python, JavaScript, PostgreSQL",
+    content:
+      "Point of Sales System is a web-based cashier and sales management platform designed to help businesses process transactions efficiently.\n\nThe system supports product management, customer orders, multiple payment methods, transaction history, invoice generation, and real-time sales monitoring. It is built to simplify daily store operations while keeping sales data organized and easy to track.",
+    gallery: [
+      "/img/pos/1.png",
+      "/img/pos/2.png",
+      "/img/pos/3.png",
+      "/img/pos/4.png",
+      "/img/pos/5.png",
+    ],
+    features: [
+      "Product and category management",
+      "Cashier transaction processing",
+      "Multiple payment methods",
+      "QRIS payment integration",
+      "Invoice and receipt generation",
+      "Real-time sales monitoring",
+      "Transaction history",
+      "Customer and merchant management",
+      "User role and access control",
+      "Responsive POS interface",
+    ],
+    techStack: [
+      "Odoo 17",
+      "Python",
+      "JavaScript",
+      "PostgreSQL",
+      "XML",
+      "QWeb",
+      "REST API",
+    ],
+  },
+  {
     title: "SPN Invoice Management System",
     description:
       "Web untuk pengelolaan sistem invoice dan transaksi vending machine SPN.",
